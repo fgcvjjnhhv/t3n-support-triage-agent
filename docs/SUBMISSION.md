@@ -25,7 +25,7 @@ Then follow the testnet walkthrough in `README.md` with two test keys kept in th
 ## Evidence to add after the testnet run
 
 - Public repository: https://github.com/fgcvjjnhhv/t3n-support-triage-agent
-- Linux CI: https://github.com/fgcvjjnhhv/t3n-support-triage-agent/actions/runs/34687102893 — successful TypeScript checks, offline tests, Rust tests, and WASM build.
+- Linux CI: https://github.com/fgcvjjnhhv/t3n-support-triage-agent/actions/runs/34687473133 — successful TypeScript checks, offline tests, Rust tests, and WASM build.
 - Testnet run: not yet performed. Claim two separate test keys and credit allocations from the official T3N page; keep both keys local and never add them to this document.
 - Screenshot 1: successful testnet connection and owner DID (redact addresses if desired)
 - Screenshot 2: the registered contract and one-function delegation
