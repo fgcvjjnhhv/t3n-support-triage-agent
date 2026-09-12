@@ -1,7 +1,7 @@
 # T3N Agent Bounty Submission Draft
 
 - **Project:** ShieldDesk — least-privilege support triage agent
-- **Status:** Draft. Complete the testnet run, publish the repository, add genuine screenshots, and replace the placeholders before submission.
+- **Status:** Draft. The repository is public and Linux CI passes. Run the T3N testnet walkthrough, add genuine screenshots, and choose the maintenance preference before submission.
 
 ## Summary
 
@@ -24,11 +24,13 @@ Then follow the testnet walkthrough in `README.md` with two test keys kept in th
 
 ## Evidence to add after the testnet run
 
-- Public repository: `<PUBLIC_GITHUB_REPOSITORY_URL>`
+- Public repository: https://github.com/fgcvjjnhhv/t3n-support-triage-agent
+- Linux CI: https://github.com/fgcvjjnhhv/t3n-support-triage-agent/actions/runs/34687102893 — successful TypeScript checks, offline tests, Rust tests, and WASM build.
+- Testnet run: not yet performed. Claim two separate test keys and credit allocations from the official T3N page; keep both keys local and never add them to this document.
 - Screenshot 1: successful testnet connection and owner DID (redact addresses if desired)
 - Screenshot 2: the registered contract and one-function delegation
 - Screenshot 3: synthetic test ticket and returned P0 routing JSON
-- Bugs or setup issues encountered: On the author's Windows machine, the pre-existing Rust installation was incomplete. Installing Rust 1.98.1 fixed compiler startup, but native linking still cannot run because the available `link.exe` is Git's utility rather than the MSVC linker, and the machine has no MSVC C++ Build Tools/Windows SDK. This is a local toolchain setup issue, not a verified T3N defect. A Linux CI workflow is included; its first hosted run is still pending.
+- Bugs or setup issues encountered: On the author's Windows machine, native Rust linking is unavailable because the machine has no MSVC C++ Build Tools/Windows SDK. The hosted Linux workflow now passes Rust tests and builds the WASM component. An initial CI test assertion and formatting issue were fixed; neither indicated a T3N defect.
 - Maintenance preference: `<CONTINUE MAINTAINING / HAND OVER TO TERMINAL 3>`
 
 ## Known limits
