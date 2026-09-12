@@ -61,4 +61,3 @@ This contest prototype uses a small keyword ruleset. A real deployment needs org
 - [Write a TEE contract](https://docs.terminal3.io/developers/adk/get-started/walkthrough/write-contract)
 - [Member Delegation](https://docs.terminal3.io/developers/adk/get-started/member-delegation)
 - [Verify the trust anchor](https://docs.terminal3.io/developers/adk/tips/verify-trust-anchor)
-
