@@ -17,7 +17,7 @@ npm run contract:test
 
 These checks run locally without T3N credentials. They do not prove that the contract has run in the hosted T3N enclave.
 
-On Windows, the Rust unit tests also need the MSVC C++ Build Tools and Windows SDK. After the repository is pushed, the included GitHub Actions workflow runs the full checks on Linux and uploads the WASM component as a short-lived artifact. If your Windows machine lacks MSVC, download that artifact and place the file at `contract/target/wasm32-wasip2/release/t3n_support_triage.wasm` before running `npm run t3n:register`.
+On Windows, Rust tests and builds need the MSVC C++ Build Tools and Windows SDK. GitHub Actions runs the full checks on Linux and uploads the WASM component as a short-lived artifact. If your Windows machine lacks MSVC, download `shielddesk-wasm32-wasip2` from a successful Actions run, extract `t3n_support_triage.wasm` to `contract/target/wasm32-wasip2/release/t3n_support_triage.wasm`, and skip the local build commands below. The prepared workspace for this submission already has that verified artifact in place.
 
 ## Run on T3N testnet
 
@@ -26,9 +26,19 @@ Claim two separate test keys and credit allocations from the [official T3N claim
 ```powershell
 $env:T3N_TENANT_KEY = '<owner-test-key>'
 $env:T3N_AGENT_KEY = '<separate-agent-test-key>'
-rustup target add wasm32-wasip2
 npm run t3n:connect
+```
+
+Build the contract locally on Linux or Windows with MSVC:
+
+```powershell
+rustup target add wasm32-wasip2
 npm run contract:build
+```
+
+On the prepared Windows workspace, skip those two build commands and use the verified artifact already at `contract/target/wasm32-wasip2/release/t3n_support_triage.wasm`. Then continue:
+
+```powershell
 npm run t3n:register
 npm run t3n:grant
 npm run demo:testnet
