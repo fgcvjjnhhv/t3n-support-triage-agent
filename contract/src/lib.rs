@@ -115,11 +115,11 @@ mod tests {
     #[test]
     fn security_issues_route_to_human_security_review() {
         let result = triage(br#"{"case_ref":"CASE-101","message":"I see an account takeover and unauthorized access"}"#).unwrap();
-        let parsed: TriageResult = serde_json::from_slice(&result).unwrap();
-        assert_eq!(parsed.priority, "P0");
-        assert_eq!(parsed.route_to, "security_on_call");
+        let parsed: serde_json::Value = serde_json::from_slice(&result).unwrap();
+        assert_eq!(parsed["priority"], "P0");
+        assert_eq!(parsed["route_to"], "security_on_call");
         assert_eq!(
-            parsed.response_policy,
+            parsed["response_policy"],
             "human_review_required_no_automated_resolution"
         );
     }
@@ -139,9 +139,9 @@ mod tests {
             br#"{"case_ref":"CASE-103","message":"Account takeover, and I was charged twice"}"#,
         )
         .unwrap();
-        let parsed: TriageResult = serde_json::from_slice(&result).unwrap();
-        assert_eq!(parsed.priority, "P0");
-        assert_eq!(parsed.category, "account_security");
+        let parsed: serde_json::Value = serde_json::from_slice(&result).unwrap();
+        assert_eq!(parsed["priority"], "P0");
+        assert_eq!(parsed["category"], "account_security");
     }
 
     #[test]
@@ -151,3 +151,4 @@ mod tests {
         assert!(triage(br#"{"case_ref":"","message":"hello"}"#).is_err());
     }
 }
+
