@@ -151,4 +151,3 @@ mod tests {
         assert!(triage(br#"{"case_ref":"","message":"hello"}"#).is_err());
     }
 }
-
