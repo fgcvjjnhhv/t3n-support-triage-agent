@@ -1,0 +1,25 @@
+{
+  "name": "t3n-support-triage-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A least-privilege support triage agent demonstrating Terminal 3 TEE contracts.",
+  "scripts": {
+    "test": "tsx --test app/tests/triage.test.ts",
+    "t3n:connect": "tsx app/scripts/quickstart.ts",
+    "t3n:register": "tsx app/scripts/register-contract.ts",
+    "t3n:grant": "tsx app/scripts/grant-agent.ts",
+    "demo:offline": "tsx app/scripts/demo-offline.ts",
+    "demo:testnet": "tsx app/scripts/demo-testnet.ts",
+    "contract:test": "cargo test --manifest-path contract/Cargo.toml",
+    "contract:build": "cargo build --manifest-path contract/Cargo.toml --target wasm32-wasip2 --release"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@terminal3/t3n-sdk": "5.2.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.3"
+  }
+}

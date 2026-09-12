@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - uses: dtolnay/rust-toolchain@1.98.1
+        with:
+          targets: wasm32-wasip2
+          components: rustfmt
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm test
+      - run: npm run demo:offline
+      - run: cargo fmt --manifest-path contract/Cargo.toml -- --check
+      - run: npm run contract:test
+      - run: npm run contract:build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: shielddesk-wasm32-wasip2
+          path: contract/target/wasm32-wasip2/release/t3n_support_triage.wasm
+          if-no-files-found: error
+          retention-days: 7

@@ -1,0 +1,15 @@
+package z:support-triage@0.1.0;
+
+world support-triage {
+  export contracts;
+}
+
+interface contracts {
+  record generic-input {
+    input: option<list<u8>>,
+    user-profile: option<list<u8>>,
+    context: option<list<u8>>,
+  }
+
+  triage-ticket: func(req: generic-input) -> result<list<u8>, string>;
+}

@@ -1,0 +1,9 @@
+node_modules/
+**/target/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+contract-id.json
+agent-card.local.json
